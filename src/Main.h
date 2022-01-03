@@ -1,17 +1,7 @@
 #pragma once
 
-#include "MainComponent.h"
+#include "MasterTrack.h"
 #include "BrowserApp.h"
-
-class MainWindow : public juce::DocumentWindow {
-public:
-    explicit MainWindow(juce::String name);
-
-    void closeButtonPressed() override;
-
-private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
-};
 
 class GuiAppApplication : public juce::JUCEApplication {
 public:
@@ -31,5 +21,5 @@ public:
 
 private:
     CefRefPtr<BrowserApp> app;
-    std::unique_ptr<MainWindow> mainWindow;
+    std::unique_ptr<MasterTrack> masterTrack;
 };

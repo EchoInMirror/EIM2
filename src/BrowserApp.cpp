@@ -11,10 +11,7 @@ void BrowserApp::OnContextInitialized()  {
     CefWindowInfo window_info;
     CefBrowserSettings browser_settings;
 
-#if defined(OS_WIN)
-    CefRect rt(0, 0, 600, 400);
-    window_info.SetAsChild((HWND) windowHandle, rt);
-#endif
+    window_info.SetAsPopup(nullptr, "Echo In Mirror");
 
-    CefBrowserHost::CreateBrowser(window_info, instance, "http://example.com/", browser_settings, nullptr, nullptr);
+    CefBrowserHost::CreateBrowser(window_info, instance, "http://127.0.0.1/", browser_settings, nullptr, nullptr);
 }

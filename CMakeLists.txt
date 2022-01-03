@@ -15,6 +15,8 @@ set(CMAKE_MODULE_PATH
     ${CMAKE_CURRENT_SOURCE_DIR}/cef-cmake/cmake
 )
 
+add_definitions(-DJUCE_PLUGINHOST_VST3)
+
 add_subdirectory(JUCE)
 
 juce_add_gui_app(EIM PRODUCT_NAME "Echo In Mirror")
@@ -52,6 +54,7 @@ target_compile_definitions(EIM
 target_link_libraries(EIM
     PRIVATE
         juce::juce_gui_extra
+        juce::juce_audio_utils
     PUBLIC
         cefdll_wrapper
         juce::juce_recommended_config_flags

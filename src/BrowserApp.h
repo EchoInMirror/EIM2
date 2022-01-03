@@ -6,9 +6,7 @@
 
 class BrowserApp : public CefApp, public CefBrowserProcessHandler {
 public:
-    BrowserApp(void* windowHandle) : windowHandle(windowHandle) { };
     ~BrowserApp() {
-        windowHandle = nullptr;
         instance = nullptr;
     }
 
@@ -19,7 +17,6 @@ public:
     void OnContextInitialized() override;
 
 private:
-    void* windowHandle;
     CefRefPtr<BrowserClient> instance = nullptr;
 
     IMPLEMENT_REFCOUNTING(BrowserApp);

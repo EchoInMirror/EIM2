@@ -5,26 +5,11 @@
 #include "include/cef_command_line.h"
 #include <include/cef_parser.h>
 
-MainWindow::MainWindow(juce::String name) : DocumentWindow(name,
-    juce::Desktop::getInstance().getDefaultLookAndFeel()
-    .findColour(ResizableWindow::backgroundColourId),
-    DocumentWindow::allButtons) {
-    setUsingNativeTitleBar(true);
-    setContentOwned(new MainComponent(), true);
-
-    setResizable(true, true);
-    centreWithSize(getWidth(), getHeight());
-
-    setVisible(true);
-}
-
-void MainWindow::closeButtonPressed() { juce::JUCEApplication::getInstance()->systemRequestedQuit(); }
-
 void GuiAppApplication::initialise(const juce::String& commandLine) {
     CefEnableHighDPISupport();
     juce::ignoreUnused(commandLine);
-    mainWindow.reset(new MainWindow(getApplicationName()));
-    app = new BrowserApp(mainWindow.get()->getContentComponent()->getWindowHandle());
+    masterTrack.reset(new MasterTrack());
+    app = new BrowserApp();
 
     CefMainArgs args;
     CefSettings settings;
@@ -35,16 +20,15 @@ void GuiAppApplication::initialise(const juce::String& commandLine) {
 
 void GuiAppApplication::shutdown() {
     CefShutdown();
-    mainWindow = nullptr;
+    masterTrack = nullptr;
 }
 
 void GuiAppApplication::systemRequestedQuit() {
-    if (app.get() && !app.get()->getInstance()->IsClosing()) {
-        app.get()->getInstance().get()->CloseAllBrowsers(false);
+    if (app.get() && !app->getInstance()->IsClosing()) {
+        app->getInstance()->CloseAllBrowsers(false);
         return;
     }
     app = nullptr;
-    mainWindow.get()->removeFromDesktop();
 }
 
 //==============================================================================
