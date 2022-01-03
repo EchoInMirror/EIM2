@@ -1,7 +1,6 @@
 #pragma once
 
 #include "MasterTrack.h"
-#include "BrowserApp.h"
 
 class GuiAppApplication : public juce::JUCEApplication {
 public:
@@ -13,13 +12,7 @@ public:
 
     void initialise(const juce::String& commandLine) override;
 
-    void shutdown() override;
-
-    void systemRequestedQuit() override;
-
-    CefRefPtr<BrowserApp> getBrowserApp() { return app; }
-
+    void shutdown() override { masterTrack = nullptr; }
 private:
-    CefRefPtr<BrowserApp> app;
     std::unique_ptr<MasterTrack> masterTrack;
 };

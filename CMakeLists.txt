@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CEF_USE_SANDBOX OFF CACHE BOOL "Force turning off of sandbox")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(CEF_CMAKE_OUTPUT_DIR ${CMAKE_BINARY_DIR}/Main)
+set(CEF_CMAKE_OUTPUT_DIR ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_MODULE_PATH
     ${CMAKE_MODULE_PATH}
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake
@@ -21,3 +21,4 @@ add_subdirectory(cef-cmake)
 
 add_subdirectory(Main)
 add_subdirectory(Render)
+add_subdirectory(Host)

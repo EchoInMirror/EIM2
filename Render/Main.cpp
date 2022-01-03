@@ -2,6 +2,7 @@
 #include <include/cef_app.h>
 
 int main() {
+    CefEnableHighDPISupport();
     CefMainArgs main_args;
 
     CefRefPtr<App> app(new App);

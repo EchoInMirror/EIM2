@@ -1,3 +1,6 @@
 [submodule "cef-cmake"]
 	path = cef-cmake
 	url = https://github.com/ShirasawaSama/cef-cmake.git
+[submodule "Host/JUCE"]
+	path = Host/JUCE
+	url = https://github.com/juce-framework/JUCE.git
