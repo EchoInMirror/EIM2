@@ -2,7 +2,6 @@
 #include <include/cef_command_line.h>
 #include <string>
 
-#include "include/cef_command_line.h"
 #include <include/cef_parser.h>
 
 void GuiAppApplication::initialise(const juce::String& commandLine) {
@@ -15,7 +14,6 @@ void GuiAppApplication::initialise(const juce::String& commandLine) {
     CefSettings settings;
     settings.no_sandbox = true;
     settings.multi_threaded_message_loop = true;
-    settings.remote_debugging_port = 8088;
     CefInitialize(args, settings, app.get(), nullptr);
 }
 
