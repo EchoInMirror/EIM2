@@ -4,15 +4,22 @@
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_audio_utils/juce_audio_utils.h>
 
-class MasterTrack: private SynchronizedAudioProcessorGraph {
+class MasterTrack: private SynchronizedAudioProcessorGraph, private juce::Timer {
 public:
     MasterTrack();
+    ~MasterTrack() {
+        DBG("6666666");
+        deviceManager.closeAudioDevice();
+        DBG("7777777");
+    }
 
     void scanPlugins();
     void removeTrack(int id);
+    void timerCallback() override;
     juce::AudioProcessorGraph::Node::Ptr createTrack();
     std::unique_ptr<PluginWrapper> loadPlugin(int id);
 private:
+    double startTime = 0;
     int sampleRate = 96000, bufferSize = 1024;
     juce::File knownPluginListXMLFile;
     std::vector<juce::AudioProcessorGraph::Node::Ptr> tracks;

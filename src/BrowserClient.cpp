@@ -28,7 +28,7 @@ void BrowserClient::OnBeforeClose(CefRefPtr<CefBrowser> browser) {
 
     if (browserList.empty()) {
         rootBrowser = nullptr;
-        juce::JUCEApplication::getInstance()->quit();
+        juce::JUCEApplication::getInstance()->systemRequestedQuit();
     }
 }
 

@@ -24,11 +24,8 @@ void GuiAppApplication::shutdown() {
 }
 
 void GuiAppApplication::systemRequestedQuit() {
-    if (app.get() && !app->getInstance()->IsClosing()) {
-        app->getInstance()->CloseAllBrowsers(false);
-        return;
-    }
     app = nullptr;
+    quit();
 }
 
 //==============================================================================
