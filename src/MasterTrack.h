@@ -8,9 +8,7 @@ class MasterTrack: private SynchronizedAudioProcessorGraph, private juce::Timer 
 public:
     MasterTrack();
     ~MasterTrack() {
-        DBG("6666666");
         deviceManager.closeAudioDevice();
-        DBG("7777777");
     }
 
     void scanPlugins();

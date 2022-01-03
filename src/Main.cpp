@@ -15,6 +15,7 @@ void GuiAppApplication::initialise(const juce::String& commandLine) {
     CefSettings settings;
     settings.no_sandbox = true;
     settings.multi_threaded_message_loop = true;
+    settings.remote_debugging_port = 8088;
     CefInitialize(args, settings, app.get(), nullptr);
 }
 

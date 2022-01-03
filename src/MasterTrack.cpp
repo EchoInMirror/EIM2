@@ -26,6 +26,7 @@ MasterTrack::MasterTrack(): SynchronizedAudioProcessorGraph() {
 }
 
 void MasterTrack::timerCallback() {
+	return;
 	auto msg = juce::MidiMessage::noteOn(1, 60, (juce::uint8)120);
 	msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
 	((Track*)tracks[0]->getProcessor())->getMidiMessageCollector().addMessageToQueue(msg);
